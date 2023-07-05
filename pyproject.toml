@@ -19,3 +19,16 @@ pyright = "^1.1.316"
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.ruff]
+line-length = 120
+src = ["./"]
+extend-select = [
+    "I",
+    "F",
+    "N",
+    "UP",
+]
+
+#[tool.pyright]
+#typeCheckingMode = "strict"

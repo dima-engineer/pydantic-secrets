@@ -41,7 +41,7 @@ class Settings(BaseSettings):
             SecretManagerSource(
                 settings_cls,
                 secret_manager_client=SecretManagerExample(),
-                default_secret_version="latest"
+                default_secret_version="latest",
             ),
         )
 

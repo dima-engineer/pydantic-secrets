@@ -11,7 +11,6 @@ from pydantic_secrets.protocols import SecretManagerClientProtocol
 
 from .warnings import SecretReceivingWarning, SecretVersionNotSpecifiedWarning
 
-
 EXTRA_SECRET_NAME_KEY = "secret_name"
 ENV_SECRET_NAME_KEY = "secret_name_env"
 EXTRA_SECRET_VERSION_KEY = "secret_version"
