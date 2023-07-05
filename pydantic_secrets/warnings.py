@@ -1,6 +1,3 @@
-import tracemalloc
-
-
 class PydanticSecretSourceWarning(Warning):
     def __init__(self, field_name: str):
         self.field_name = field_name
@@ -11,7 +8,6 @@ class SecretReceivingWarning(PydanticSecretSourceWarning):
         self.field_name = field_name
 
     def __str__(self):
-        tracemalloc.start()
         msg = f'Couldn\'t load secret for field "{self.field_name}".'
         return msg
 
