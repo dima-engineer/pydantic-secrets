@@ -30,5 +30,5 @@ extend-select = [
     "UP",
 ]
 
-#[tool.pyright]
-#typeCheckingMode = "strict"
+[tool.black]
+line-length = 120
