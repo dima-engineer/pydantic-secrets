@@ -67,7 +67,6 @@ class SecretManagerSource(PydanticBaseSettingsSource):
                     )
                 except Exception:
                     warnings.warn(field_name, category=SecretReceivingWarning)
-                    pass
             elif secret_name and not secret_version:
                 warnings.warn(field_name, category=SecretVersionNotSpecifiedWarning)
         return data
