@@ -1,0 +1,25 @@
+shell: /bin/sh
+
+env:
+  GREEN: '\033[0;32m'
+  CYAN: '\033[0;36m'
+  YELLOW: '\033[0;33m'
+  CLEAR: '\033[0m'
+  SRC_PATH: './'
+
+commands:
+  format:
+    description: Run code auto formatting tools tools
+    cmd: |
+      echo ${CYAN}"> Black"${CLEAR}
+      poetry run black ${SRC_PATH}
+      echo ${CYAN}"> Ruff Fix"${CLEAR}
+      poetry run ruff check --fix ${SRC_PATH}
+
+  validate:
+    description: Run code validation tools
+    cmd: |
+      echo ${CYAN}"> Ruff"${CLEAR}
+      poetry run ruff check ${SRC_PATH}
+      echo ${CYAN}"> PyRight"${CLEAR}
+      poetry run pyright
