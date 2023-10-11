@@ -1,0 +1,27 @@
+name: Publish to PyPi
+
+on:
+  workflow_call:
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    name: Publish
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: 3.11.4
+      - name: Set up poetry
+        uses: Gr1N/setup-poetry@v8
+        with:
+          poetry-version: "1.6.1"
+      - name: Install dependencies
+        run: |
+          poetry install
+      - name: Build project for distribution
+        run: poetry build
+      - name: Publish to PyPI
+        env:
+          POETRY_PYPI_TOKEN_PYPI: ${{ secrets.PYPI_TOKEN }}
+        run: poetry publish

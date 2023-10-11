@@ -1,0 +1,11 @@
+name: Release
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  publish:
+    name: Code Validation
+    uses: './.github/workflows/publish.yaml'
+    secrets: inherit
