@@ -9,12 +9,13 @@ packages = [{include = "pydantic_secrets"}]
 
 [tool.poetry.dependencies]
 python = "^3.11"
-pydantic-settings = "^2.0.1"
+pydantic-settings = "^2.0.2"
+google-cloud-secret-manager = "^2.16.2"
 
 [tool.poetry.group.dev.dependencies]
 black = "^23.3.0"
 ruff = "^0.0.277"
-pyright = "^1.1.316"
+pyright = "^1.1.317"
 
 [build-system]
 requires = ["poetry-core"]
