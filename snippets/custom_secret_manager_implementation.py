@@ -11,6 +11,10 @@ class SecretManagerExample(SecretManagerClientABC):
         return "test-value-from-secret-manager"
 
 
+class SomeEnum(BaseModel):
+    variable1: tuple[str, str] = ("foo", "bar")
+
+
 class DatabaseSettings(BaseModel):
     name: str
     host: str
@@ -23,6 +27,7 @@ class Settings(BaseSettings):
     var1: str = Field(secret_name="test-secret")
     var2: str = Field(secret_name_env="VAR2_SECRET_NAME")
     db: DatabaseSettings
+    some_enum: SomeEnum
 
     @classmethod
     def settings_customise_sources(
