@@ -54,7 +54,6 @@ class SecretManagerSource(PydanticBaseSettingsSource):
                 if isinstance(field.annotation, type) and issubclass(field.annotation, BaseModel):
                     data[field_name] = self._process_fields(field.annotation.model_fields)
                     continue
-                data[field_name] = field
                 continue
             secret_name, secret_version = (
                 self._get_secret_info_from_extra(field.json_schema_extra) if field.json_schema_extra else (None, None)
