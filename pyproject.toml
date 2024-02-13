@@ -16,10 +16,16 @@ google-cloud-secret-manager = "^2.16.2"
 black = "^23.3.0"
 ruff = "^0.0.277"
 pyright = "^1.1.317"
+pytest = "^8.0.0"
+coverage = "^7.4.1"
 
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.coverage.report]
+precision = 2
+show_missing = true
 
 [tool.ruff]
 line-length = 120
