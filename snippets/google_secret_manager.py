@@ -11,12 +11,12 @@ class DatabaseSettings(BaseModel):
     host: str
     user: str
     port: int = 3306
-    password: str = Field(secret_name="test-db-password", secret_version="v2")
+    password: str = Field(json_schema_extra={"secret_name": "test-db-password", "secret_version": "v2"})
 
 
 class Settings(BaseSettings):
-    var1: str = Field(secret_name="test-secret")
-    var2: str = Field(secret_name_env="VAR2_SECRET_NAME")
+    var1: str = Field(json_schema_extra={"secret_name": "test-secret"})
+    var2: str = Field(json_schema_extra={"secret_name_env": "VAR2_SECRET_NAME"})
     db: DatabaseSettings
 
     @classmethod
