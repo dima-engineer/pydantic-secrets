@@ -1,8 +1,8 @@
 name: Pull Request Pipeline
 on:
   pull_request:
-    branches:
-      - main
+
+
 jobs:
   validation:
     name: Validation Checks
