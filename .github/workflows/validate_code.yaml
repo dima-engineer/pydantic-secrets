@@ -1,0 +1,27 @@
+name: Validate Python Code
+
+on:
+  workflow_call:
+
+jobs:
+  validate:
+    runs-on: ubuntu-20.04
+    name: Code Validation
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.11.2'
+      - name: Set up poetry
+        uses: Gr1N/setup-poetry@v8
+        with:
+          poetry-version: "1.5.1"
+      - name: Install dependencies
+        run: |
+          poetry install
+      - name: Install Lets
+        uses: lets-cli/lets-action@v1.1
+        with:
+          version: "v0.0.50"
+      - name: Run Validation
+        run: lets validate

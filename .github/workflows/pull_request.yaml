@@ -1,0 +1,15 @@
+name: Pull Request Pipeline
+on:
+  pull_request:
+
+
+jobs:
+  validation:
+    name: Validation Checks
+    uses: './.github/workflows/validate_code.yaml'
+    secrets: inherit
+  tests:
+    needs: validation
+    name: Tests
+    uses: './.github/workflows/tests.yaml'
+    secrets: inherit

@@ -1,6 +1,6 @@
 from dotenv import load_dotenv
 from pydantic import BaseModel, Field
-from pydantic_settings import BaseSettings, PydanticBaseSettingsSource
+from pydantic_settings import BaseSettings, PydanticBaseSettingsSource, SettingsConfigDict
 
 from pydantic_secrets import SecretManagerClientABC, SecretManagerSource
 
@@ -24,7 +24,7 @@ class DatabaseSettings(BaseModel):
 
 
 class Settings(BaseSettings):
-    var1: str = Field(json_schema_extra={"secret_name": "test-secret"})
+    var1: str = Field(json_schema_extra={"secret_name": "test-secret", "secret_version_env": "VAR1_SECRET_VERSION"})
     var2: str = Field(json_schema_extra={"secret_name_env": "VAR2_SECRET_NAME"})
     db: DatabaseSettings
     some_enum: SomeEnum
@@ -50,9 +50,7 @@ class Settings(BaseSettings):
             ),
         )
 
-    class Config:
-        env_nested_delimiter = "__"
-        extra = "allow"
+    model_config = SettingsConfigDict(env_nested_delimiter="__", extra="allow")
 
 
 if __name__ == "__main__":
