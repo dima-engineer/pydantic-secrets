@@ -18,7 +18,7 @@ jobs:
       - id: run-tests
         uses: dima-engineer/pytest-reporter@main
         with:
-          pytest-root-dir: app/
+          pytest-root-dir: ./
           cov-omit-list: pydantic_secrets/warnings.py, tests/*
           cov-threshold-single: ${{ env.COVERAGE_SINGLE }}
           cov-threshold-total: ${{ env.COVERAGE_TOTAL }}
