@@ -1,8 +1,9 @@
+import os
+
 import pytest
 from pydantic import ValidationError
 
 from snippets.custom_secret_manager_implementation import Settings
-import os
 
 ENV_VARIABLES = {
     "DB__HOST": "test-db-host",
@@ -23,7 +24,6 @@ def pre_setup_env_vars():
 
 
 def test_settings_with_custom_secret_manager__success():
-
     secret_manager_return_value = "test-value-from-secret-manager"
     settings = Settings()
     assert settings.db.host == os.getenv("DB__HOST")
@@ -35,7 +35,6 @@ def test_settings_with_custom_secret_manager__success():
 
 
 def test_settings_with_custom_secret_manager__var2_no_secret_name_env():
-
     os.environ.pop("VAR2_SECRET_NAME")
     with pytest.raises(ValidationError) as e:
         Settings()

@@ -39,3 +39,10 @@ extend-select = [
 
 [tool.black]
 line-length = 120
+
+[tool.pyright]
+ignore = [
+    "tests/*",
+    "snippets/*",
+    "pydantic_secrets/protocols.py",
+]
