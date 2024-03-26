@@ -20,7 +20,7 @@ class GoogleSecretManagerClient(SecretManagerClientABC):
         self.project_id = project_id
         self._client_credentials = credentials
         self._secret_path_template = f"projects/{self.project_id}" + "/secrets/{secret_name}/versions/{secret_version}"
-        self._encoding_type = DEFAULT_ENCODING_TYPE
+        self._encoding_type = encoding_type
 
     @property
     def client(self):
