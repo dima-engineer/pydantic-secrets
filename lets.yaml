@@ -8,7 +8,7 @@ env:
   SRC_PATH: './'
 
 commands:
-  format:
+  fmt:
     description: Run code auto formatting tools tools
     cmd: |
       echo ${CYAN}"> Black"${CLEAR}
@@ -23,3 +23,9 @@ commands:
       poetry run ruff check ${SRC_PATH}
       echo ${CYAN}"> PyRight"${CLEAR}
       poetry run pyright
+
+  test:
+    description: Run tests
+    cmd: |
+      coverage run -m pytest .
+      coverage report
