@@ -16,7 +16,7 @@ jobs:
         with:
           python-version: '3.11.2'
       - id: run-tests
-        uses: dima-engineer/pytest-reporter@main
+        uses: dima-engineer/pytest-reporter@v3.0.1-candidate
         with:
           pytest-root-dir: ./
           cov-omit-list: pydantic_secrets/warnings.py, tests/*
