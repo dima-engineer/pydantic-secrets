@@ -1,27 +1,32 @@
-[tool.poetry]
+[project]
+authors = [
+    {name = "Dmitry Marchuk", email = "marchuk.d13@gmail.com"},
+]
+license = {text = "MIT"}
+requires-python = "<4.0,>=3.11"
+dependencies = [
+    "pydantic-settings<3.0.0,>=2.0.2",
+    "google-cloud-secret-manager<3.0.0,>=2.16.2",
+]
 name = "pydantic-secrets"
 version = "0.2.1"
 description = "The library is designed for extending your BaseSettings config class to load secrets from a secret manager"
-authors = ["Dmitry Marchuk <marchuk.d13@gmail.com>"]
-license = "MIT"
 readme = "README.md"
-packages = [{include = "pydantic_secrets"}]
 
-[tool.poetry.dependencies]
-python = "^3.11"
-pydantic-settings = "^2.0.2"
-google-cloud-secret-manager = "^2.16.2"
+[dependency-groups]
+dev = [
+    "black<24.0.0,>=23.3.0",
+    "ruff<1.0.0,>=0.0.277",
+    "pyright<2.0.0,>=1.1.317",
+    "pytest<9.0.0,>=8.0.0",
+    "coverage<8.0.0,>=7.4.1",
+]
 
-[tool.poetry.group.dev.dependencies]
-black = "^23.3.0"
-ruff = "^0.0.277"
-pyright = "^1.1.317"
-pytest = "^8.0.0"
-coverage = "^7.4.1"
-
+[tool.pdm.build]
+includes = ["pydantic_secrets"]
 [build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+requires = ["pdm-backend"]
+build-backend = "pdm.backend"
 
 [tool.coverage.report]
 precision = 2
@@ -30,7 +35,7 @@ show_missing = true
 [tool.ruff]
 line-length = 120
 src = ["./"]
-extend-select = [
+lint.extend-select = [
     "I",
     "F",
     "N",
