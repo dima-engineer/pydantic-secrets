@@ -5,7 +5,7 @@ on:
 
 jobs:
   unitTests:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     name: Unit Tests
     env:
       COVERAGE_SINGLE: 85
@@ -16,7 +16,7 @@ jobs:
         with:
           python-version: '3.11.2'
       - id: run-tests
-        uses: dima-engineer/pytest-reporter@v4ss
+        uses: dima-engineer/pytest-reporter@v4
         with:
           pytest-root-dir: ./
           cov-omit-list: pydantic_secrets/warnings.py, tests/*
