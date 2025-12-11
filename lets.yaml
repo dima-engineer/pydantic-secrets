@@ -27,5 +27,5 @@ commands:
   test:
     description: Run tests
     cmd: |
-      uv run coverage run -m pytest .
+      uv run coverage run -m pytest -s .
       uv run coverage report
