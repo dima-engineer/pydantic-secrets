@@ -12,20 +12,20 @@ commands:
     description: Run code auto formatting tools tools
     cmd: |
       echo ${CYAN}"> Black"${CLEAR}
-      poetry run black ${SRC_PATH}
+      uv run black ${SRC_PATH}
       echo ${CYAN}"> Ruff Fix"${CLEAR}
-      poetry run ruff check --fix ${SRC_PATH}
+      uv run ruff check --fix ${SRC_PATH}
 
-  validate:
+  val:
     description: Run code validation tools
     cmd: |
       echo ${CYAN}"> Ruff"${CLEAR}
-      poetry run ruff check ${SRC_PATH}
+      uv run ruff check ${SRC_PATH}
       echo ${CYAN}"> PyRight"${CLEAR}
-      poetry run pyright
+      uv run pyright
 
   test:
     description: Run tests
     cmd: |
-      coverage run -m pytest .
-      coverage report
+      uv run coverage run -m pytest -s .
+      uv run coverage report

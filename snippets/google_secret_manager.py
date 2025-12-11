@@ -1,6 +1,6 @@
 from dotenv import load_dotenv
 from pydantic import BaseModel, Field
-from pydantic_settings import BaseSettings, PydanticBaseSettingsSource
+from pydantic_settings import BaseSettings, PydanticBaseSettingsSource, SettingsConfigDict
 
 from pydantic_secrets import SecretManagerSource
 from pydantic_secrets.secret_manager import GoogleSecretManagerClient
@@ -42,12 +42,9 @@ class Settings(BaseSettings):
             ),
         )
 
-    class Config:
-        env_nested_delimiter = "__"
-        extra = "allow"
+    model_config = SettingsConfigDict(env_nested_delimiter="__", extra="allow")
 
 
 if __name__ == "__main__":
     load_dotenv()
     settings = Settings(_env_file="./.env", _env_file_encoding="utf-8")
-    print(f"{settings=}")

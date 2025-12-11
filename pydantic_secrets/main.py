@@ -57,7 +57,8 @@ class SecretManagerSource(PydanticBaseSettingsSource):
                 continue
             secret_name, secret_version = (
                 self._get_secret_info_from_extra(field.json_schema_extra)  # pyright: ignore [reportArgumentType]
-                if field.json_schema_extra else (None, None)
+                if field.json_schema_extra
+                else (None, None)
             )
             if secret_name and secret_version:
                 try:

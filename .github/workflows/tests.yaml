@@ -5,18 +5,18 @@ on:
 
 jobs:
   unitTests:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     name: Unit Tests
     env:
       COVERAGE_SINGLE: 85
       COVERAGE_TOTAL: 90
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-python@v4
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
         with:
           python-version: '3.11.2'
       - id: run-tests
-        uses: dima-engineer/pytest-reporter@v3.0.1-candidate
+        uses: dima-engineer/pytest-reporter@v4
         with:
           pytest-root-dir: ./
           cov-omit-list: pydantic_secrets/warnings.py, tests/*
