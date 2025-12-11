@@ -5,8 +5,8 @@ authors = [
 license = {text = "MIT"}
 requires-python = "<4.0,>=3.11"
 dependencies = [
-    "pydantic-settings<3.0.0,>=2.0.2",
-    "google-cloud-secret-manager<3.0.0,>=2.16.2",
+    "pydantic-settings<3.0.0,>=2.12.0",
+    "google-cloud-secret-manager<3.0.0,>=2.25.0",
 ]
 name = "pydantic-secrets"
 version = "0.2.1"
@@ -17,7 +17,7 @@ readme = "README.md"
 dev = [
     "black<24.0.0,>=23.3.0",
     "ruff<1.0.0,>=0.0.277",
-    "pyright<2.0.0,>=1.1.317",
+    "pyright>=1.1.407,<2.0.0",
     "pytest<9.0.0,>=8.0.0",
     "coverage<8.0.0,>=7.4.1",
 ]

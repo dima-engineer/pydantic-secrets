@@ -16,7 +16,7 @@ commands:
       echo ${CYAN}"> Ruff Fix"${CLEAR}
       uv run ruff check --fix ${SRC_PATH}
 
-  validate:
+  val:
     description: Run code validation tools
     cmd: |
       echo ${CYAN}"> Ruff"${CLEAR}
