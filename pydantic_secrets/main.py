@@ -66,7 +66,7 @@ class SecretManagerSource(PydanticBaseSettingsSource):
                         secret_name=secret_name,
                         secret_version=secret_version,
                     )
-                except Exception:
+                except Exception:  # noqa: BLE001
                     warnings.warn(field_name, category=SecretReceivingWarning)
             elif secret_name and not secret_version:
                 warnings.warn(field_name, category=SecretVersionNotSpecifiedWarning)
