@@ -11,8 +11,8 @@ commands:
   fmt:
     description: Run code auto formatting tools tools
     cmd: |
-      echo ${CYAN}"> Black"${CLEAR}
-      uv run black ${SRC_PATH}
+      echo ${CYAN}"> Ruff Format"${CLEAR}
+      uv run ruff format ${SRC_PATH}
       echo ${CYAN}"> Ruff Fix"${CLEAR}
       uv run ruff check --fix ${SRC_PATH}
 
@@ -21,6 +21,8 @@ commands:
     cmd: |
       echo ${CYAN}"> Ruff"${CLEAR}
       uv run ruff check ${SRC_PATH}
+      echo ${CYAN}"> Ruff Format Check"${CLEAR}
+      uv run ruff format --check ${SRC_PATH}
       echo ${CYAN}"> PyRight"${CLEAR}
       uv run pyright
 

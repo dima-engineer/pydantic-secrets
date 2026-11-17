@@ -11,15 +11,15 @@ jobs:
       COVERAGE_SINGLE: 85
       COVERAGE_TOTAL: 90
     steps:
-      - uses: actions/checkout@v6
-      - uses: actions/setup-python@v6
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
         with:
-          python-version: '3.11.2'
+          python-version: '3.14'
       - id: run-tests
-        uses: dima-engineer/pytest-reporter@v4
+        uses: dima-engineer/pytest-reporter@v4.4.0
         with:
           pytest-root-dir: ./
           cov-omit-list: pydantic_secrets/warnings.py, tests/*
           cov-threshold-single: ${{ env.COVERAGE_SINGLE }}
           cov-threshold-total: ${{ env.COVERAGE_TOTAL }}
-          poetry-version: 1.5.1
+          uv-version: 0.13.8

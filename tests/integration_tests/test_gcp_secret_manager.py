@@ -1,13 +1,11 @@
 import os
-
-import pytest
-from pydantic import ValidationError
-
-from pydantic_secrets.exceptions import SecretManagerClientError
-from snippets.google_secret_manager import Settings
-from google.api_core.exceptions import GoogleAPIError
 from unittest.mock import MagicMock
 
+import pytest
+from google.api_core.exceptions import GoogleAPIError
+from pydantic import ValidationError
+
+from snippets.google_secret_manager import Settings
 
 ENV_VARIABLES = {
     "DB__HOST": "test-db-host",
@@ -33,14 +31,15 @@ def mock_gcp_secret_manager_client(mocker):
     mock_response = MagicMock()
     mock_payload = MagicMock()
     mock_data = MagicMock()
-    
+
     mock_data.decode.return_value = "test-value-from-secret-manager"
     mock_payload.data = mock_data
     mock_response.payload = mock_payload
     mock_client_instance.access_secret_version.return_value = mock_response
-    
-    mock_class = mocker.patch("pydantic_secrets.secret_manager.gcp.SecretManagerServiceClient", return_value=mock_client_instance)
+
+    mocker.patch("pydantic_secrets.secret_manager.gcp.SecretManagerServiceClient", return_value=mock_client_instance)
     return mock_client_instance
+
 
 def test_settings_with_gcp_secret_manager__success():
     secret_manager_return_value = "test-value-from-secret-manager"
@@ -62,7 +61,8 @@ def test_settings_with_gcp_secret_manager__var2_no_secret_name_env():
     assert pydantic_errors[0]["type"] == "missing"
     assert pydantic_errors[0]["loc"] == ("var2",)
 
+
 def test_settings_with_gcp_secret_manager__google_api_error(mock_gcp_secret_manager_client):
     mock_gcp_secret_manager_client.access_secret_version.side_effect = GoogleAPIError("test-error")
-    with pytest.raises(ValidationError) as e:
+    with pytest.raises(ValidationError):
         Settings()
